@@ -12,7 +12,9 @@ I would like an app to generate top rated movies and recipes in different date n
 adobe xd sketch image
 
 ## APIs to be Used
-
+Movie API: OMDB https://www.omdbapi.com/
+Food Recipes API: https://www.themealdb.com/api.php
+Drink Recipes API: https://www.thecocktaildb.com/api.php
 
 ## Breakdown of tasks
 
