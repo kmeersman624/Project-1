@@ -1,3 +1,17 @@
+var mealAPI = "1"
+
+var mealQueryURL= "https://www.themealdb.com/api/json/v1/1/random.php" + mealQueryURL + "&random";
+
+
+$.ajax({
+    url: mealqueryURL,
+    method: "GET"
+}).then(function(response){
+console.log(response);
+})
+
+
+
 var movieAPI = "cac7fedb";
 var movieQueryURL = "http://www.omdbapi.com/?apikey=" + movieAPI + "&t=";
 console.log(movieQueryURL);
