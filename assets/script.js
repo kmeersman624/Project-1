@@ -29,6 +29,7 @@ $.ajax({
    
   
 
+//***************************************************** */
 var drinkAPI = "1";
 var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
@@ -59,9 +60,18 @@ var movieChoices = [
 
 let randomIndex = Math.floor(Math.random() * movieChoices.length);
 
-$.ajax({
-  url: (movieQueryURL += movieChoices[randomIndex]),
-  method: "GET",
-}).then(function (response) {
-  console.log(response);
-});
+function displayMovieInfo() {
+  $.ajax({
+    url: (movieQueryURL += movieChoices[randomIndex]),
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    var poster = response.Poster;
+    var movieTitle = response.Title;
+    var plot = response.Plot;
+    $("#movieImg").append(poster);
+    $("#movieTitle").append(movieTitle);
+    $("#plot").append(plot);
+  });
+}
+$(document).on("click", "#generate", displayMovieInfo);
