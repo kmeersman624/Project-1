@@ -4,7 +4,7 @@ var mealQueryURL= "https://www.themealdb.com/api/json/v1/1/random.php" + mealQue
 
 
 $.ajax({
-    url: mealqueryURL,
+    url: mealQueryURL,
     method: "GET"
 }).then(function(response){
 console.log(response);
