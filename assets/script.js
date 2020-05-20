@@ -1,36 +1,45 @@
 var mealAPI = "1";
+
 var mealQueryURL = "https://www.themealdb.com/api/json/v1/1/random.php";
+
+function displayMealInfo(){
 
 $.ajax({
   url: mealQueryURL,
   method: "GET",
 }).then(function (response) {
   console.log(response);
-});
+
+  // let foodImg = response
+  let foodTitle = response.meals[0].strMeal;
+  let meal = response.meals[0];
+
+  for(let i = 1; i < 21; i++){
+    if(meal["strIngredient" + i]){
+      console.log(meal["strIngredient" + i]);
+      console.log(meal["strMeasure" + i]);
+    };
+  }
+  // $("#food").append(foodTitle);
+ });
+}
+
+//  $(document).on("click", "#food", displayMealInfo);
+   
+   
+  
 
 //***************************************************** */
 var drinkAPI = "1";
 var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
-function displayDrinkInfo() {
-  $.ajax({
-    url: drinkQueryUrl,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-    // var drinkImg = response.
-    // var drinkTitle = response.
-    // var drinkRecipe = response.
-    const drinkTitle = result.meals[0];
-    for(let i = 1; i < 21; i++){
-      if(meal["strIngredient" + i]){
-        console.log(meal["strIngredient" + i]);
-        console.log(meal["strMeasure" + i]);
-      }
-    }
-  });
-}
-//********************************************************************** */
+$.ajax({
+  url: drinkQueryUrl,
+  method: "GET",
+}).then(function (response) {
+  console.log(response);
+
+});
 var movieAPI = "cac7fedb";
 var movieQueryURL = "http://www.omdbapi.com/?apikey=" + movieAPI + "&t=";
 console.log(movieQueryURL);
