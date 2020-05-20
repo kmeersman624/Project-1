@@ -26,6 +26,8 @@ function displayDrinkInfo() {
       if(meal["strIngredient" + i]){
         console.log(meal["strIngredient" + i]);
         console.log(meal["strMeasure" + i]);
+      }
+    }
   });
 }
 //********************************************************************** */
