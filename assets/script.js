@@ -65,4 +65,4 @@ function displayMovieInfo() {
     $("#plot").append(plot);
   });
 }
-$(document).on("click", "#generate", displayMovieInfo);
+$(document).on("click", "#menuDirect", displayMovieInfo);
