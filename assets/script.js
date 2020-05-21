@@ -33,7 +33,7 @@ function displayMealInfo() {
   });
 }
 //event listener for on click on index.html button
-$(document).on("click", "#menuDirect", displayMealInfo);
+$(document).on("click", "#foodDirect", displayMealInfo);
 
 //***************************************************** */
 //Drink API call
@@ -68,7 +68,7 @@ function displayDrinkInfo() {
   });
 }
 //event listener for on click on index.html button
-$(document).on("click", "#menuDirect", displayDrinkInfo);
+$(document).on("click", "#drinkDirect", displayDrinkInfo);
 
 //************************************************************************ */
 
@@ -108,4 +108,4 @@ function displayMovieInfo() {
   });
 }
 //event listener for on click on index.html button
-$("#mrnuDirect").on("click", "#menuDirect", displayMovieInfo);
+$(document).on("click", "#movieDirect", displayMovieInfo);
