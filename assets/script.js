@@ -1,12 +1,16 @@
-var mealQueryURL = "https://www.themealdb.com/api/json/v1/1/random.php";
-
+var mealQueryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+var entrees = ["Beef Wellington", "Beef Brisket Pot Roast", "Big Mac", "Chili prawn linguine", "Coq au vin", "Crock Pot Chicken Baked Tacos", "Chickpea Fajitas", "Duck Confit", "Fettucine alfredo", "French Onion Chicken with Roasted Carrots & Mashed Potatoes", "General Tso's Chicken", "Vegan Lasagna", "Honey Teriyaki Salmon", "Salmon Prawn Risotto", "Jerk chicken with rice & peas", "Spinach & Ricotta Cannelloni", "Soy-Glazed Meatloaves with Wasabi Mashed Potatoes & Roasted Carrots"]
 //Food API call
 function displayMealInfo() {
+  let randomIndex = Math.floor(Math.random() * entrees.length);
   $.ajax({
-    url: mealQueryURL,
+    url: (mealQueryURL + entrees[randomIndex]),
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    $("#foodImg").empty();
+    $("#foodTitle").empty();
+    $("#foodRecipe").empty();
     //pull responses for img, title, ingerdients/recipe from API
     const foodImg = response.meals[0].strMealThumb;
     const foodTitle = response.meals[0].strMeal;
@@ -33,7 +37,7 @@ function displayMealInfo() {
   });
 }
 //event listener for on click on index.html button
-$("#menuDirect").on("click", displayMealInfo);
+$("#foodDirect").on("click", displayMealInfo);
 
 //***************************************************** */
 //Drink API call
@@ -44,12 +48,15 @@ function displayDrinkInfo() {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    $("#drinkImg").empty();
+    $("#drinkTitle").empty();
+    $("#drinkRecipe").empty();
     //pull responses for img, title, ingerdients/recipe from API
     const drinkImg = response.drinks[0].strDrinkThumb;
     const drinkTitle = response.drinks[0].strDrink;
     const drinkIngredients = response.drinks[0];
     const drinkInstruct = response.drinks[0].strInstructions;
-    const img = meal.strMealThumb;
+    const img = response.drinks[0].strDrinkThumb;
     const $img = $("<img>").attr("src", img);
     $("#drinkImg").append($img);
     $("#drinkTitle").append(drinkTitle);
@@ -57,8 +64,8 @@ function displayDrinkInfo() {
     //For loop to get ingredient and recipe arrays
     for (let i = 1; i < 21; i++) {
       if (drinkIngredients["strIngredient" + i]) {
-        const ingredient = drinkRecipe["strIngredient" + i];
-        const measurement = drinkRecipe["strMeasure" + i];
+        const ingredient = drinkIngredients["strIngredient" + i];
+        const measurement = drinkIngredients["strMeasure" + i];
 
         const $p = $("<p>").text(`${ingredient}: ${measurement}`);
 
@@ -68,7 +75,7 @@ function displayDrinkInfo() {
   });
 }
 //event listener for on click on index.html button
-$("#menuDirect").on("click", displayDrinkInfo);
+$("#drinkDirect").on("click", displayDrinkInfo);
 
 //************************************************************************ */
 
@@ -85,27 +92,51 @@ var movieChoices = [
   "Star Wars: Episode V - The Empire Strikes Back",
   "Silver Linings Playbook",
   "Almost Famous",
-  "The Wrong Missy",
+  "50 First Dates",
   "Date Night",
+  "The Money Pit",
+  "25th Hour",
+  "Never Been Kissed",
+  "50/50",
+  "Friends with Benefits",
+  "No Strings Attached",
+  "Bridesmaids",
+  "Dawn of the Dead",
+  "True Lies",
+  "October Skies",
+  "Sleeping with the Enemy",
+  "Pirates of the Carribean",
+  "Parasite",
+  "Inception",
+  "The Mummy"
 ];
 
-let randomIndex = Math.floor(Math.random() * movieChoices.length);
-
 function displayMovieInfo() {
+  let randomIndex = Math.floor(Math.random() * movieChoices.length);
   $.ajax({
-    url: (movieQueryURL += movieChoices[randomIndex]),
+    url: (movieQueryURL + movieChoices[randomIndex]),
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    $("#movieImg").empty();
     //pull responses for img, title, plot from api
-    var poster = response.Poster;
+    var img = response.Poster;
     var movieTitle = response.Title;
     var plot = response.Plot;
+    var actors = response.Actors;
+    var director = response.Director;
+    var released = response.Released;
+    var rated = response.Rated;
     //append variables to menu.html
-    $("#movieImg").append(poster);
-    $("#movieTitle").append(movieTitle);
-    $("#plot").append(plot);
-  });
-}
+    const $img = $("<img>").attr("src", img);
+    $("#movieImg").append($img);
+    $("#movieTitle").text(movieTitle);
+    $("#plot").text(plot);
+    $("#actors").text("Actors: " + actors);
+    $("#director").text("Director: " + director);
+    $("#released").text("Released Date: " + released);
+    $("#rated").text("Rated: " + rated);
+    })
+};
 //event listener for on click on index.html button
-$("#menuDirect").on("click", displayMovieInfo);
+$("#movieDirect").on("click", displayMovieInfo);
