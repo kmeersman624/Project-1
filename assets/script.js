@@ -1,10 +1,28 @@
 var mealQueryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
-var entrees = ["Beef Wellington", "Beef Brisket Pot Roast", "Big Mac", "Chili prawn linguine", "Coq au vin", "Crock Pot Chicken Baked Tacos", "Chickpea Fajitas", "Duck Confit", "Fettucine alfredo", "French Onion Chicken with Roasted Carrots & Mashed Potatoes", "General Tso's Chicken", "Vegan Lasagna", "Honey Teriyaki Salmon", "Salmon Prawn Risotto", "Jerk chicken with rice & peas", "Spinach & Ricotta Cannelloni", "Soy-Glazed Meatloaves with Wasabi Mashed Potatoes & Roasted Carrots"]
+var entrees = [
+  "Beef Wellington",
+  "Beef Brisket Pot Roast",
+  "Big Mac",
+  "Chili prawn linguine",
+  "Coq au vin",
+  "Crock Pot Chicken Baked Tacos",
+  "Chickpea Fajitas",
+  "Duck Confit",
+  "Fettucine alfredo",
+  "French Onion Chicken with Roasted Carrots & Mashed Potatoes",
+  "General Tso's Chicken",
+  "Vegan Lasagna",
+  "Honey Teriyaki Salmon",
+  "Salmon Prawn Risotto",
+  "Jerk chicken with rice & peas",
+  "Spinach & Ricotta Cannelloni",
+  "Soy-Glazed Meatloaves with Wasabi Mashed Potatoes & Roasted Carrots",
+];
 //Food API call
 function displayMealInfo() {
   let randomIndex = Math.floor(Math.random() * entrees.length);
   $.ajax({
-    url: (mealQueryURL + entrees[randomIndex]),
+    url: mealQueryURL + entrees[randomIndex],
     method: "GET",
   }).then(function (response) {
     console.log(response);
@@ -114,13 +132,13 @@ var movieChoices = [
   "Pirates of the Carribean",
   "Parasite",
   "Inception",
-  "The Mummy"
+  "The Mummy",
 ];
 
 function displayMovieInfo() {
   let randomIndex = Math.floor(Math.random() * movieChoices.length);
   $.ajax({
-    url: (movieQueryURL + movieChoices[randomIndex]),
+    url: movieQueryURL + movieChoices[randomIndex],
     method: "GET",
   }).then(function (response) {
     console.log(response);
@@ -145,7 +163,7 @@ function displayMovieInfo() {
     $("#director").text("Director: " + director);
     $("#released").text("Released Date: " + released);
     $("#rated").text("Rated: " + rated);
-    })
-};
+  });
+}
 //event listener for on click on index.html button
 $("#movieDirect").on("click", displayMovieInfo);
