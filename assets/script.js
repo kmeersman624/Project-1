@@ -33,7 +33,7 @@ function displayMealInfo() {
   });
 }
 //event listener for on click on index.html button
-$(document).on("click", "#menuDirect", displayMealInfo);
+$(document).on("click", "#foodDirect", displayMealInfo);
 
 //***************************************************** */
 //Drink API call
@@ -51,7 +51,7 @@ function displayDrinkInfo() {
     const drinkInstruct = response.drinks[0].strInstructions;
     // const img = meal.strMealThumb;
     const $img = $("<img>").attr("src", img);
-    $("body").append($img);
+    $("#drinkImage").append($img);
     $("#drinkTitle").append(drinkTitle);
     $("#drinkRecipe").append(drinkInstruct);
     //For loop to get ingredient and recipe arrays
@@ -62,13 +62,13 @@ function displayDrinkInfo() {
 
         const $p = $("<p>").text(`${ingredient}: ${measurement}`);
 
-        $("body").append($p);
+        $("drinkRecipe").append($p);
       }
     }
   });
 }
 //event listener for on click on index.html button
-$(document).on("click", "#menuDirect", displayDrinkInfo);
+$(document).on("click", "#drinkDirect", displayDrinkInfo);
 
 //************************************************************************ */
 
@@ -108,4 +108,4 @@ function displayMovieInfo() {
   });
 }
 //event listener for on click on index.html button
-$(document).on("click", "#menuDirect", displayMovieInfo);
+$(document).on("click", "#movieDirect", displayMovieInfo);
