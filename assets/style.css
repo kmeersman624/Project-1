@@ -8,3 +8,8 @@
     0 100px 80px rgba(0, 0, 0, 0.12)
   ;
 }
+.center {
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+}

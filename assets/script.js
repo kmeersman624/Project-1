@@ -37,6 +37,9 @@ function displayMealInfo() {
 
     const img = meal.strMealThumb;
     const $img = $("<img>").attr("src", img);
+    $img.css("height","300");
+    $img.css("width", "300");
+    $img.css("border-radius", "100%");
     $("#foodImg").append($img);
     $("#foodTitle").append(foodTitle);
     $("#foodRecipe").append(foodInstruct);
@@ -76,6 +79,9 @@ function displayDrinkInfo() {
     const drinkInstruct = response.drinks[0].strInstructions;
     const img = response.drinks[0].strDrinkThumb;
     const $img = $("<img>").attr("src", img);
+    $img.css("height","300");
+    $img.css("width", "300");
+    $img.css("border-radius", "100%");
     $("#drinkImg").append($img);
     $("#drinkTitle").append(drinkTitle);
     $("#drinkRecipe").append(drinkInstruct);
@@ -121,7 +127,7 @@ var movieChoices = [
   "Bridesmaids",
   "Dawn of the Dead",
   "True Lies",
-  "October Skies",
+  "October Sky",
   "Sleeping with the Enemy",
   "Pirates of the Carribean",
   "Parasite",
@@ -147,6 +153,9 @@ function displayMovieInfo() {
     var rated = response.Rated;
     //append variables to menu.html
     const $img = $("<img>").attr("src", img);
+    $img.css("height","300");
+    $img.css("width", "300");
+    $img.css("border-radius", "100%");
     $("#movieImg").append($img);
     $("#movieTitle").text(movieTitle);
     $("#plot").text(plot);
