@@ -1,49 +1,80 @@
-var mealAPI = "1";
-
 var mealQueryURL = "https://www.themealdb.com/api/json/v1/1/random.php";
 
-function displayMealInfo(){
+//Food API call
+function displayMealInfo() {
+  $.ajax({
+    url: mealQueryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    //pull responses for img, title, ingerdients/recipe from API
+    const foodImg = response.meals[0].strMealThumb;
+    const foodTitle = response.meals[0].strMeal;
+    const meal = response.meals[0];
+    const foodInstruct = response.meals[0].strInstructions;
 
-$.ajax({
-  url: mealQueryURL,
-  method: "GET",
-}).then(function (response) {
-  console.log(response);
+    const img = meal.strMealThumb;
+    const $img = $("<img>").attr("src", img);
+    $("body").append($img);
+    $("#foodTitle").append(foodTitle);
+    $("#foodRecipe").append(foodInstruct);
+    //For loop to get ingredient and recipe arrays
+    for (let i = 1; i < 21; i++) {
+      if (meal["strIngredient" + i]) {
+        const ingredient = meal["strIngredient" + i];
+        const measurement = meal["strMeasure" + i];
 
-  // let foodImg = response
-  let foodTitle = response.meals[0].strMeal;
-  let meal = response.meals[0];
+        const $p = $("<p>").text(`${ingredient}: ${measurement}`);
 
-  for(let i = 1; i < 21; i++){
-    if(meal["strIngredient" + i]){
-      console.log(meal["strIngredient" + i]);
-      console.log(meal["strMeasure" + i]);
-    };
-  }
-  // $("#food").append(foodTitle);
- });
+        $("body").append($p);
+      }
+    }
+    // $("#food").append(foodTitle);
+  });
 }
-
-//  $(document).on("click", "#food", displayMealInfo);
-   
-   
-  
+//event listener for on click on index.html button
+$(document).on("click", "#menuDirect", displayMealInfo);
 
 //***************************************************** */
-var drinkAPI = "1";
+//Drink API call
 var drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+function displayDrinkInfo() {
+  $.ajax({
+    url: drinkQueryUrl,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    //pull responses for img, title, ingerdients/recipe from API
+    const drinkImg = response.drinks[0].strDrinkThumb;
+    const drinkTitle = response.drinks[0].strDrink;
+    const drinkIngredients = response.drinks[0];
+    const drinkInstruct = response.drinks[0].strInstructions;
+    // const img = meal.strMealThumb;
+    const $img = $("<img>").attr("src", img);
+    $("body").append($img);
+    $("#drinkTitle").append(drinkTitle);
+    $("#drinkRecipe").append(drinkInstruct);
+    //For loop to get ingredient and recipe arrays
+    for (let i = 1; i < 21; i++) {
+      if (drinkIngredients["strIngredient" + i]) {
+        const ingredient = drinkRecipe["strIngredient" + i];
+        const measurement = drinkRecipe["strMeasure" + i];
 
-$.ajax({
-  url: drinkQueryUrl,
-  method: "GET",
-}).then(function (response) {
-  console.log(response);
+        const $p = $("<p>").text(`${ingredient}: ${measurement}`);
 
-});
+        $("body").append($p);
+      }
+    }
+  });
+}
+//event listener for on click on index.html button
+$(document).on("click", "#menuDirect", displayDrinkInfo);
+
+//************************************************************************ */
+
 var movieAPI = "cac7fedb";
 var movieQueryURL = "http://www.omdbapi.com/?apikey=" + movieAPI + "&t=";
-console.log(movieQueryURL);
-// var posterQueryURL = http://img.omdbapi.com/?apikey=[yourkey]&
+// created move array ince api does not have randomizer
 var movieChoices = [
   "Pulp Fiction",
   "A Knight's Tale",
@@ -66,12 +97,15 @@ function displayMovieInfo() {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    //pull responses for img, title, plot from api
     var poster = response.Poster;
     var movieTitle = response.Title;
     var plot = response.Plot;
+    //append variables to menu.html
     $("#movieImg").append(poster);
     $("#movieTitle").append(movieTitle);
     $("#plot").append(plot);
   });
 }
-$(document).on("click", "#generate", displayMovieInfo);
+//event listener for on click on index.html button
+$(document).on("click", "#menuDirect", displayMovieInfo);
