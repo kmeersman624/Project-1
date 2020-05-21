@@ -15,7 +15,7 @@ function displayMealInfo() {
 
     const img = meal.strMealThumb;
     const $img = $("<img>").attr("src", img);
-    $("body").append($img);
+    $("foodImg").append($img);
     $("#foodTitle").append(foodTitle);
     $("#foodRecipe").append(foodInstruct);
     //For loop to get ingredient and recipe arrays
@@ -51,7 +51,7 @@ function displayDrinkInfo() {
     const drinkInstruct = response.drinks[0].strInstructions;
     // const img = meal.strMealThumb;
     const $img = $("<img>").attr("src", img);
-    $("body").append($img);
+    $("#drinkImg").append($img);
     $("#drinkTitle").append(drinkTitle);
     $("#drinkRecipe").append(drinkInstruct);
     //For loop to get ingredient and recipe arrays
@@ -62,7 +62,7 @@ function displayDrinkInfo() {
 
         const $p = $("<p>").text(`${ingredient}: ${measurement}`);
 
-        $("body").append($p);
+        $("#drinkRecipe").append($p);
       }
     }
   });
@@ -108,4 +108,4 @@ function displayMovieInfo() {
   });
 }
 //event listener for on click on index.html button
-$(document).on("click", "#menuDirect", displayMovieInfo);
+$("#mrnuDirect").on("click", "#menuDirect", displayMovieInfo);
