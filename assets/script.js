@@ -11,6 +11,7 @@ $.ajax({
   console.log(response);
 
   // let foodImg = response
+  let foodimg
   let foodTitle = response.meals[0].strMeal;
   let meal = response.meals[0];
 
