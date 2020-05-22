@@ -116,6 +116,9 @@ function displayMealInfo(query) {
     $("#foodImg").append($img);
     $("#foodTitle").append(foodTitle);
     $("#foodRecipe").append(foodInstruct);
+    $("#foodRecipe").css("overflow", "scroll");
+    $("#foodRecipe").css("height", "250");
+    $("#foodRecipe").css("width", "300");
     const $ingredientDiv = $("<p>");
     $ingredientDiv.append("INGREDIENTS: " + "<br>");
     //For loop to get ingredient and recipe arrays
@@ -172,6 +175,9 @@ function displayDrinkInfo(query) {
     $("#drinkImg").append($img);
     $("#drinkTitle").append(drinkTitle);
     $("#drinkRecipe").append(drinkInstruct);
+    $("#drinkRecipe").css("overflow", "scroll");
+    $("#drinkRecipe").css("height", "250");
+    $("#drinkRecipe").css("width", "300");
     //For loop to get ingredient and recipe arrays
     for (let i = 1; i < 21; i++) {
       if (drinkIngredients["strIngredient" + i]) {
@@ -216,6 +222,9 @@ function displayMovieInfo(query) {
     $("#director").text("Director: " + director);
     $("#released").text("Released Date: " + released);
     $("#rated").text("Rated: " + rated);
+    $("#movieBox").css("overflow", "scroll");
+    $("#movieBox").css("height", "250");
+    $("#movieBox").css("width", "300");
   });
 }
 //Save all date night popluated data to local storage for user to reference in future
