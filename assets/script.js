@@ -43,15 +43,21 @@ function displayMealInfo() {
     $("#foodImg").append($img);
     $("#foodTitle").append(foodTitle);
     $("#foodRecipe").append(foodInstruct);
+    const $ingredientDiv = $("<p>");
+    $ingredientDiv.append("INGREDIENTS: " + "<br>")
     //For loop to get ingredient and recipe arrays
     for (let i = 1; i < 21; i++) {
       if (meal["strIngredient" + i]) {
         const ingredient = meal["strIngredient" + i];
         const measurement = meal["strMeasure" + i];
 
-        const $p = $("<p>").text(`${ingredient}: ${measurement}`);
-
-        $("#foodRecipe").append($p);
+        if (measurement === ""){
+          measurement = "to taste"
+          $ingredientDiv.append(`${ingredient}: ${measurement}, \n`)
+        } else {
+          $ingredientDiv.append(`${ingredient}: ${measurement}, \n`)
+        }
+        $("#foodRecipe").append($ingredientDiv);
       }
     }
     // $("#food").append(foodTitle);
