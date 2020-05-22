@@ -17,7 +17,8 @@ I would like an app to generate top rated movies and recipes so that I am able t
 
 ## Images
 
-![Image of XD Sketch](./assets/images/sketch.png)
+![Screenshot of Start](./assets/images/start.png)
+![Screenshot of Menu](./assets/images/menu.png)
 
 ## Built With
 
