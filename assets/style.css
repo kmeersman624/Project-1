@@ -1,15 +1,137 @@
-.box {
-    box-shadow:
-    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12)
-  ;
+body {
+  
+  background-color: #f7eaea;
+  
 }
+
+/* .topbar */
+
+
+
+.buttonbox {
+  border-radius: 20px;
+  background-color: #eabdbd;
+  color: #535353;
+  
+}
+
+.row {
+  
+  text-decoration-color: grey;
+  text-align: center;
+  text-decoration-color: darkgrey;
+  
+}
+
+
+.box {
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+  border-radius: 100%;
+  width: 500;
+  height: 500;
+}
+
 .center {
     display: block;
     margin-left: 50%;
     margin-right: 50%;
+}
+
+.rowcolumn {
+  
+  width:700;
+  height:150;
+  
+}
+
+.column {
+  
+  margin-left: 0; 
+  margin-right: 0;
+  
+}
+
+.calloutbox {
+ 
+  color: #535353;
+  border: none;
+  background-color: #eabdbd;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+
+.mediaObjectCalloutBoxCenter{
+  color: #535353;
+  border: none;
+  background-color: #eabdbd;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#foodImg {
+  
+  width: 300px; 
+  height: 300px;
+
+}
+
+.buttonHollowExpandedBox{
+
+  border: none;
+  background-color: #efcfcf;
+  border-radius: 20px;
+  color: #535353;
+}
+
+#drinkImg{
+
+  width: 300px; 
+  height: 300px;
+
+}
+
+#movieImg{
+  width: 300px; 
+  height: 300px;
+}
+
+.mediaObjectSectionMainSection{
+  align-content: center;
+}
+
+#menuDirect{
+
+  border: none;
+  background-color: #50ba66;
+  border-radius: 20px;
+  color: whitesmoke;
+  font-size: 20px;
+
+}
+
+.row{
+
+  align-content: center;
+  margin: 0;
+  margin-bottom: 0;
+  padding: 0;
+
+}
+
+#ftag{
+
+  background-color: F7EAEA; 
+  text-align: center; 
+  color: white;
 }
