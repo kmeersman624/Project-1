@@ -1,3 +1,4 @@
+//local storage for saving date night choices to screen
 var dateNightData = localStorage.getItem("dateNightData");
 
 if (dateNightData) {
@@ -5,7 +6,7 @@ if (dateNightData) {
 } else {
   dateNightData = {};
 }
-
+//saves data from each category
 if (dateNightData.meal) {
   displayMealInfo(dateNightData.meal);
 }
@@ -15,7 +16,7 @@ if (dateNightData.drink) {
 if (dateNightData.movie) {
   displayMovieInfo(dateNightData.movie);
 }
-
+//food section url and array of menu options
 var mealQueryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 var entrees = [
   "Beef Wellington",
@@ -36,10 +37,10 @@ var entrees = [
   "Spinach & Ricotta Cannelloni",
   "Soy-Glazed Meatloaves with Wasabi Mashed Potatoes & Roasted Carrots",
 ];
-
+//Movie section url and array of movie options
 var movieAPI = "cac7fedb";
 var movieQueryURL = "http://www.omdbapi.com/?apikey=" + movieAPI + "&t=";
-// created move array ince api does not have randomizer
+// created move array since api does not have randomizer
 var movieChoices = [
   "Pulp Fiction",
   "A Knight's Tale",
@@ -95,6 +96,7 @@ function displayMealInfo(query) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    //clears populated food items when button is pushed
     $("#foodImg").empty();
     $("#foodTitle").empty();
     $("#foodRecipe").empty();
@@ -104,12 +106,13 @@ function displayMealInfo(query) {
     const foodTitle = response.meals[0].strMeal;
     const meal = response.meals[0];
     const foodInstruct = response.meals[0].strInstructions;
-
     const img = meal.strMealThumb;
     const $img = $("<img>").attr("src", img);
+    //changed sizes and styling of thumbnail from APIs
     $img.css("height", "300");
     $img.css("width", "300");
     $img.css("border-radius", "100%");
+    //append food info onto page
     $("#foodImg").append($img);
     $("#foodTitle").append(foodTitle);
     $("#foodRecipe").append(foodInstruct);
@@ -130,21 +133,18 @@ function displayMealInfo(query) {
         $("#foodRecipe").append($ingredientDiv);
       }
     }
-    // $("#food").append(foodTitle);
   });
 }
 
-//***************************************************** */
-//Drink API call
 function displayDrinkInfo(query) {
   var drinkQueryUrl;
-
+  //Display saved drink info if user saved or generate new if nothing saved
   if (query) {
     drinkQueryUrl = query;
   } else {
     drinkQueryUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
   }
-
+  //Drink API call
   $.ajax({
     url: drinkQueryUrl,
     method: "GET",
@@ -153,7 +153,7 @@ function displayDrinkInfo(query) {
     dateNightData.drink =
       "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
       response.drinks[0].idDrink;
-
+    //clears populated drink items when button is pushed
     $("#drinkImg").empty();
     $("#drinkTitle").empty();
     $("#drinkRecipe").empty();
@@ -164,9 +164,11 @@ function displayDrinkInfo(query) {
     const drinkInstruct = response.drinks[0].strInstructions;
     const img = response.drinks[0].strDrinkThumb;
     const $img = $("<img>").attr("src", img);
+    //changed sizes and styling of thumbnail from APIs
     $img.css("height", "300");
     $img.css("width", "300");
     $img.css("border-radius", "100%");
+    //append drink info onto page
     $("#drinkImg").append($img);
     $("#drinkTitle").append(drinkTitle);
     $("#drinkRecipe").append(drinkInstruct);
@@ -175,7 +177,7 @@ function displayDrinkInfo(query) {
       if (drinkIngredients["strIngredient" + i]) {
         const ingredient = drinkIngredients["strIngredient" + i];
         const measurement = drinkIngredients["strMeasure" + i];
-
+        //line up ingredient to cooresponding measurment
         const $p = $("<p>").text(`${ingredient}: ${measurement}`);
 
         $("#drinkRecipe").append($p);
@@ -184,13 +186,14 @@ function displayDrinkInfo(query) {
   });
 }
 
-//************************************************************************ */
 function displayMovieInfo(query) {
+  //call to get movie info from api
   $.ajax({
     url: query,
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    //clears populated movie items when button is pushed
     $("#movieImg").empty();
     //pull responses for img, title, plot from api
     var img = response.Poster;
@@ -200,11 +203,12 @@ function displayMovieInfo(query) {
     var director = response.Director;
     var released = response.Released;
     var rated = response.Rated;
-    //append variables to menu.html
     const $img = $("<img>").attr("src", img);
+    //changed sizes and styling of thumbnail from APIs
     $img.css("height", "300");
     $img.css("width", "300");
     $img.css("border-radius", "100%");
+    //append movie info onto page
     $("#movieImg").append($img);
     $("#movieTitle").text(movieTitle);
     $("#plot").text(plot);
@@ -214,7 +218,7 @@ function displayMovieInfo(query) {
     $("#rated").text("Rated: " + rated);
   });
 }
-
+//Save all date night popluated data to local storage for user to reference in future
 $("#menuDirect").on("click", function () {
   localStorage.setItem("dateNightData", JSON.stringify(dateNightData));
 });
