@@ -2,10 +2,12 @@ body {
   
   background-color: #f7eaea;
   
+  
 }
-
-/* .topbar */
-
+.navButton {
+padding-top: 20px;
+padding-left: 20px;
+}
 
 
 .buttonbox {
@@ -15,7 +17,7 @@ body {
   
 }
 
-.row {
+.rowyourboat {
   
   text-decoration-color: grey;
   text-align: center;
@@ -39,9 +41,9 @@ body {
 }
 
 .center {
-    display: block;
-    margin-left: 50%;
-    margin-right: 50%;
+  display: block;
+  margin-left: 50%;
+  margin-right: 50%;
 }
 
 .rowcolumn {
@@ -51,7 +53,7 @@ body {
   
 }
 
-.column {
+.column1 {
   
   margin-left: 0; 
   margin-right: 0;
@@ -64,8 +66,18 @@ body {
   border: none;
   background-color: #eabdbd;
   border-radius: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+
+}
+
+.calloutbox2 {
+
+  border: none;
+  background-color: #eabdbd;
+  border-radius: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 
 }
 
@@ -86,14 +98,6 @@ body {
 
 }
 
-.buttonHollowExpandedBox{
-
-  border: none;
-  background-color: #efcfcf;
-  border-radius: 20px;
-  color: #535353;
-}
-
 #drinkImg{
 
   width: 300px; 
@@ -106,11 +110,21 @@ body {
   height: 300px;
 }
 
-.mediaObjectSectionMainSection{
+.mediaObject {
   align-content: center;
 }
 
-#menuDirect{
+.section {
+
+  border: none; 
+  background-color: #EABDBD; 
+  border-radius: 20px; 
+  margin-left: 5px; 
+  margin-right: 5px;
+
+}
+
+.menuDirect1 {
 
   border: none;
   background-color: #50ba66;
@@ -120,7 +134,7 @@ body {
 
 }
 
-.row{
+.row1 {
 
   align-content: center;
   margin: 0;
@@ -129,9 +143,9 @@ body {
 
 }
 
-#ftag{
+.ftag {
 
-  background-color: F7EAEA; 
+  background-color: #f7eaea; 
   text-align: center; 
   color: white;
 }
