@@ -39,7 +39,7 @@ var entrees = [
 ];
 //Movie section url and array of movie options
 var movieAPI = "cac7fedb";
-var movieQueryURL = "http://www.omdbapi.com/?apikey=" + movieAPI + "&t=";
+var movieQueryURL = "https://www.omdbapi.com/?apikey=" + movieAPI + "&t=";
 // created move array since api does not have randomizer
 var movieChoices = [
   "Pulp Fiction",
